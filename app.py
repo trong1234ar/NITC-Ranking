@@ -51,7 +51,7 @@ with main_col:
             tasks = [process_user(session, i, df_row, results) for i, df_row in df.iterrows()]
             await asyncio.gather(*tasks)
         main_df = pd.DataFrame(results, columns=['Name', 'Acc', 'NotAcc'])
-        main_df = main_df.sort_values(by=['Acc', 'NotAcc'], ascending=[0, 0])
+        main_df = main_df.sort_values(by=['Acc', 'NotAcc'], ascending=[0, 1])
         for user in range(len(main_df)):
             name = main_df.iloc[user, 0]
             acc = main_df.iloc[user, 1]
