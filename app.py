@@ -51,15 +51,7 @@ with main_col:
             tasks = [process_user(session, i, df_row, results) for i, df_row in df.iterrows()]
             await asyncio.gather(*tasks)
         main_df = pd.DataFrame(results, columns=['Name', 'Acc', 'NotAcc'])
-        main_df = main_df.sort_values(by='Acc', ascending=0)
-        # for user in range(len(main_df)):
-        #     name = main_df.iloc[user, 0]
-        #     acc = main_df.iloc[user, 1]
-        #     notAcc = main_df.iloc[user, 2]
-        #     if user == 0:
-        #         st.markdown(f"<div class='top-box'>{user + 1} {name} {acc} {notAcc} </div>", unsafe_allow_html=True)
-        #     else:
-        #         st.markdown(f"<div class='normal-box'>{user + 1} {name} {acc} {notAcc} </div>", unsafe_allow_html=True)
+        main_df = main_df.sort_values(by=['Acc', 'NotAcc'], ascending=[0, 0])
         for user in range(len(main_df)):
             name = main_df.iloc[user, 0]
             acc = main_df.iloc[user, 1]
